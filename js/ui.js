@@ -5,7 +5,7 @@ class UI {
 
     // display profile
     showProfile(user) {
-        console.log(user);
+        // console.log(user);
         this.user_profile.innerHTML = `
 
         <div class="">
@@ -25,6 +25,8 @@ class UI {
                         <li class="list-group-item">Location: ${user.location}</li>
                         <li class="list-group-item">Member Since: ${user.created_at}</li>
                     </ul>
+                    <hr>
+                        <div id="userorgs" class="mb-1"></div>
                 </div>
                 <div class="col-md-8">
                     <div class="col-xs-1 bg-secondary center-block">
@@ -35,6 +37,7 @@ class UI {
                         <span class="badge badge-info">Following:${user.following}</span></h4>
                     </div>
                     <hr>
+                    
                     <div id="repos"></div>
                 </div>
             </div>
@@ -69,7 +72,7 @@ class UI {
                                     <div class="col col-md-3 col-sm-3">
                                         <span class="align-top"><i class="material-icons text-dark" style="font-size: 16px">usb</i> ${repo.forks_count}</span>
                                     </div>
-                            
+
                             </div>
                         </div>
                     </div>
@@ -79,4 +82,22 @@ class UI {
 
         document.getElementById('repos').innerHTML = output;
     }
+
+
+    showOrgs(orgs) {
+        let output = '';
+        orgs.forEach(org => {
+            let link = `https://github.com/${org.login}`;
+            output += `
+                <a href=${link}><img src="${org.avatar_url}" alt="" height="48px" width="48px"></a>
+            `;
+        });
+
+        document.getElementById('userorgs').innerHTML = output;
+
+    }
+
+
+
+
 }

@@ -28,12 +28,16 @@ search_user.addEventListener('keyup', e => {
 
                 } else {
                     // show profile
-                    console.log(data.repos);
+                    // console.log(data.repos);
                     ui.showProfile(data.profile);
+                    ui.showOrgs(data.orgs);
                     ui.showRepos(data.repos);
 
 
                 }
+            })
+            .catch(err => {
+                console.log('error occurred!!!' + err);
             })
     } else {
         // clear Profile

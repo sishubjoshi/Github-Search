@@ -2,8 +2,8 @@ class Github {
 
     // 
     constructor() {
-        this.client_id = 'c161673bcfe2fff05524';
-        this.client_secret = 'cbd11291cd7cabed8ecc78cde30f4647d49a5120';
+        this.client_id = '1e5442a9a5db0efc9e91';
+        this.client_secret = 'be1e2de19ab918b08a8480780b721ce589174c4a';
     }
 
     async getUser(user) {
@@ -12,16 +12,22 @@ class Github {
 
         const userRepos = await fetch(`https://api.github.com/users/${user}/repos?client_id=${this.client_id}&client_secret=${this.client_secret}`);
 
+        const userOrgs = await fetch(`https://api.github.com/users/${user}/orgs?client_id=${this.client_id}&client_secret=${this.client_secret}`);
+
         const profile = await userProfile.json();
 
         const repos = await userRepos.json();
 
+        const orgs = await userOrgs.json();
+
+
+
 
         return {
             profile,
-            repos
+            repos,
+            orgs
         }
     }
-
 
 }
